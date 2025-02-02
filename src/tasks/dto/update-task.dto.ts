@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 import { Priority, Progress, Type } from '../schemas/task.schema';
 
-export class CreateTaskDto {
+export class UpdateTaskDto {
   @IsNotEmpty()
   @IsString()
   title: string;
@@ -40,8 +40,4 @@ export class CreateTaskDto {
   @IsOptional()
   @IsDateString()
   endDate: Date;
-
-  @IsOptional()
-  @IsDateString()
-  createdAt: Date;
 }

@@ -17,7 +17,12 @@ export class UserService {
     return newUser.save();
   }
 
-  getUserByEmail(email: string): Promise<User | undefined> {
-    return this.userModel.findOne({ email }).populate('password');
+  getUserByEmail(
+    email: string,
+    includePassword = false,
+  ): Promise<User | undefined> {
+    let populate = null;
+    if (includePassword) populate = 'password';
+    return this.userModel.findOne({ email }).populate(populate);
   }
 }
